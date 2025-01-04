@@ -1,3 +1,6 @@
+# Evitar que os dados de treinamento sejam enviados para o GitHub
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
