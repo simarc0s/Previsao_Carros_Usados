@@ -10,7 +10,7 @@ def train_models(X_train, y_train):
     # Regressão Linear
     linear_model = LinearRegression()
     scores = cross_val_score(
-        linear_model, X_train, y_train, cv=2, scoring="neg_mean_squared_error"
+        linear_model, X_train, y_train, cv=3, scoring="neg_mean_squared_error"
     )
     models["Linear Regression"] = {
         "model": linear_model.fit(X_train, y_train),
@@ -19,16 +19,16 @@ def train_models(X_train, y_train):
 
     # Random Forest
     rf_param_grid = {
-        "n_estimators": [10],
-        "max_depth": [None],
-        "min_samples_split": [2],
-        "min_samples_leaf": [1],
+        "n_estimators": [50, 100, 150],
+        "max_depth": [None, 10, 20],
+        "min_samples_split": [2, 5],
+        "min_samples_leaf": [1, 2],
     }
     rf = RandomForestRegressor(random_state=42)
     rf_grid_search = GridSearchCV(
         estimator=rf,
         param_grid=rf_param_grid,
-        cv=2,
+        cv=3,
         scoring="neg_mean_squared_error",
         n_jobs=-1,
     )
@@ -40,12 +40,12 @@ def train_models(X_train, y_train):
     }
 
     # K-Nearest Neighbors
-    knn_param_grid = {"n_neighbors": [5]}
+    knn_param_grid = {"n_neighbors": [3, 5, 7]}
     knn = KNeighborsRegressor()
     knn_grid_search = GridSearchCV(
         estimator=knn,
         param_grid=knn_param_grid,
-        cv=2,
+        cv=3,
         scoring="neg_mean_squared_error",
         n_jobs=-1,
     )
