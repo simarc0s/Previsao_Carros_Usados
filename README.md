@@ -6,7 +6,7 @@ Este projeto utiliza Machine Learning para prever o preço de carros usados com 
 - Python
 - Jupyter Notebook
 - Scikit-learn
-- Pandas e NumPy
+- NumPy
 
 ## Estrutura do Projeto
 - `notebooks/`: Contém os notebooks Jupyter com os modelos treinados.
